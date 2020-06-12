@@ -3,7 +3,19 @@ var app = new Vue({
   data: {
     answers: 0,
     hits: 0,
-    questions: []
+    questions: [
+
+    ]
+  },
+  mounted () {
+    axios.get('http://localhost:8500/bzz-raw:/07f1112168025f4c309b652fb364b9ea126728e7b0959338b0bf9f5187d474d0')
+      .then(response => {
+        console.log('-----------')
+        console.log(this.questions)
+        console.log('-----------')
+        this.questions = response.data.questions
+
+      })
   },
   methods: {
     closeModal: function () {
